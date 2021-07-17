@@ -1,0 +1,98 @@
+<!--miniprogram/pages/home_center/common_panel/index.js.wxml-->
+<wxs src="./index.wxs" module="utils" />
+<view class="a">
+<image class="common-panel-backgroud" src="{{forest}}" />
+<navbar device_name="智能跳绳" bind:jumpTodeviceEditPage="jumpTodeviceEditPage" />
+<view class="common-panel-header" >
+  <!-- <view class="common-panel-header-block"  style="background-color: green"> -->
+    <!-- <view class="common-panel-header-dpName">1111111</view>
+    <view class="common-panel-header-dpValue">22</view> -->
+    <view class="count-box">
+          <view class="count-box-unit">目标</view>
+          <view class="count-box-value">100{{titlevalue}}</view>
+          <view class="count-box-unit">  {{titletext}}</view>
+        </view>
+        <view bindtap="sendCount1" class="count-tip">当前模式：{{modetext}}</view>
+        
+        <view class="items">
+          <view class="item">
+            <view class="item-value">11{{valueOne}}</view>
+            <view class="item-label">22{{textOne}}</view>
+          </view>
+          <view class="item">
+            <view class="item-value">55{{valueTwo}}"</view>
+            <view class="item-label">66{{textTwo}}</view>
+          </view>
+          <view class="item">
+            <view class="item-value">33{{valueThr}}</view>
+            <view class="item-label">44{{textThr}}</view>
+          </view>
+        </view>
+  <!-- </view> -->
+</view>
+
+<!-- <block wx:if="{{isRoDpListShow}}">
+  <view class="statuslist">
+    <block wx:for="{{roDpList}}" wx:key="{{item.code}}" wx:for-item="item" wx:for-index='idx'>
+      <view class="{{utils.countDpItem(roDpListLength,idx)}}">
+        <view class="roDpItem-dpName">{{item.code}}</view>
+        <view class="roDpItem-status">{{item.value}}</view>
+      </view>
+    </block>
+  </view>
+</block> -->
+
+<view class="scroll-view" style="background-color:green">
+  <view bind:tap="sendModFree" class="mode-item">
+    <view wx:if="{{blushow}}"  bind:tap="connect" class="mode-item">
+            <view class="mode-item-left">
+              <view class="mode-item-title">连接蓝牙</view>
+            </view>
+          </view>
+            <view class="mode-item-left">
+              <view class="mode-item-title">自由训练</view>
+            </view>
+          </view>
+          <view bind:tap="sendModCount" class="mode-item">
+            <view class="mode-item-left">
+              <view class="mode-item-title">计数训练</view>
+            </view>
+          </view>
+          <view bind:tap="sendModTime" class="mode-item">
+            <view class="mode-item-left">
+              <view class="mode-item-title">计时训练</view>
+            </view>
+          </view>
+          <view wx:if="{{anniuShow}}" class="mode-item">
+            <view class="anniuitems">
+              <van-button class="item" bind:click="tsstart" icon="play" color="#a0a0a0" type="info">开始</van-button>
+              <van-button class="item" bind:click="tspause" icon="pause" color="#a0a0a0" type="info">{{tsPauseText}}</van-button>
+              <van-button class="item" bind:click="tsstop" icon="stop" color="#a0a0a0" type="info">结束</van-button>
+            </view>
+          </view>
+  <!-- <block wx:if="{{isRwDpListShow}}">
+    <block wx:for="{{rwDpList}}" wx:key="{{item.code}}" wx:for-item="item">
+      <block wx:if="{{item.type === 'Boolean'}}">
+        <Boolean model:isChecked="{{item.value}}" dpCode="{{item.code}}" dpName="{{item.name}}" bind:sendDp="sendDp" />
+      </block>
+      <block wx:if="{{item.type === 'Integer'}}">
+        <Integer model:value="{{item.value}}" values="{{item.values}}" dpCode="{{item.code}}" dpName="{{item.name}}"
+          bind:sendDp="sendDp" />
+      </block>
+      <block wx:if="{{item.type === 'Enum'}}">
+        <Enum model:value="{{item.value}}" values="{{item.values}}" dpCode="{{item.code}}" dpName="{{item.name}}"
+          bind:sendDp="sendDp" />
+      </block>
+    </block>
+  </block> -->
+</view>
+<van-popup show="{{ PopCountshow }}" closeable round position="bottom" custom-style="height: 20%" bind:close="onPopCountClose">
+      <view class="popupmain">
+        <van-stepper class="popupitem" value="{{ PopCountvalue }}" bind:change="onCountChange" />
+        <van-button class="popupitem" bind:click="PopCountConfim" plain hairline type="info">确 定</van-button>
+      </view>
+    </van-popup>
+    <van-popup show="{{ PopTimeshow }}" round position="bottom" bind:close="onPopTimeClose">
+      <van-picker show-toolbar title="选择时长 分 秒" columns="{{ Timecolumns }}" bind:cancel="onPopTimeCancel" bind:confirm="onPopTimeConfirm" />
+    </van-popup>
+  </view>

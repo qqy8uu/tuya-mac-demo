@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "navbar": "../../components/t_navbar",
+    "van-button": "@vant/weapp/button/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-stepper": "@vant/weapp/stepper/index"
+ 
+    
+  },
+  "navigationStyle": "custom"
+}
